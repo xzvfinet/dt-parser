@@ -1,0 +1,224 @@
+[
+	{
+		"Name": "Route01",
+		"TileList": [
+			{
+				"Position":
+				{
+					"X": 0,
+					"Y": 0
+				},
+				"Type": "VE_START",
+				"Effect":
+				{
+					"EffectType": "VE_BattleRandom",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Right",
+				"StoryType": "VE_PreviousEffect",
+				"StoryCode": "STORY",
+				"IsRouteChange": true,
+				"RouteIndex": 2,
+				"IsMustStop": false,
+				"IsRandomable": true
+			},
+			{
+				"Position":
+				{
+					"X": 1,
+					"Y": 0
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_BattleRandom",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Right",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 2,
+					"Y": 0
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_Heal",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Right",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 3,
+					"Y": 0
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_GetGold",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Right",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 4,
+					"Y": 0
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_Battle",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Down",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			}
+		],
+		"IsEnterable": true
+	},
+	{
+		"Name": "Route02",
+		"TileList": [
+			{
+				"Position":
+				{
+					"X": 0,
+					"Y": 1
+				},
+				"Type": "VE_CLEAR",
+				"Effect":
+				{
+					"EffectType": "VE_BattleRandom",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_NONE",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 1,
+					"Y": 1
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_Heal",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Left",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 2,
+					"Y": 1
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_BossBattle",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Left",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": true,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 3,
+					"Y": 1
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_BattleRandom",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Left",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			},
+			{
+				"Position":
+				{
+					"X": 4,
+					"Y": 1
+				},
+				"Type": "VE_NORMAL",
+				"Effect":
+				{
+					"EffectType": "VE_Battle",
+					"IntValue": 0,
+					"TextValue": "None"
+				},
+				"ArrowDirection": "VE_Left",
+				"StoryType": "VE_NONE",
+				"StoryCode": "None",
+				"IsRouteChange": false,
+				"RouteIndex": 0,
+				"IsMustStop": false,
+				"IsRandomable": false
+			}
+		],
+		"IsEnterable": true
+	}
+]

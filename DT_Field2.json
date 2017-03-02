@@ -1,0 +1,29 @@
+[
+	{
+		"Name": "테스트필드",
+		"BackgroundImage": "Texture2D'/Game/Assets/Textures/bg_battle2.bg_battle2'",
+		"TileImageList": [
+			"PaperSprite'/Game/Assets/Sprites/hexagon_green_Sprite.hexagon_green_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/Hexagon_orange_Sprite.Hexagon_orange_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/Hexagon_Sprite.Hexagon_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/hexagon_navy_Sprite.hexagon_navy_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/hexagon_pink_Sprite.hexagon_pink_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/hexagon_white_Sprite.hexagon_white_Sprite'",
+			"PaperSprite'/Game/Assets/Sprites/hexagon_black_Sprite.hexagon_black_Sprite'"
+		],
+		"Row": 2,
+		"Column": 5,
+		"RouteList": [
+			"Route01",
+			"Route02"
+		],
+		"EnemyCorpsList": [
+			"EnemyCorps01",
+			"EnemyCorps02"
+		],
+		"EliteEnemyCorpsList": [
+			"EnemyCorps03"
+		],
+		"ItemList": []
+	}
+]
