@@ -5,221 +5,58 @@
     <meta charset="utf-8" />
     <meta name="google" value="notranslate" />
     <title>DataTable Parser</title>
+    <!-- <link rel='stylesheet' href='//cdn.jsdelivr.net/foundation/5.0.2/css/foundation.min.css'> -->
+    <link rel='stylesheet' href='static/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
     <script type="text/javascript" src="static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="static/js/jsoneditor.min.js"></script>
+    <script>
+    JSONEditor.defaults.theme = 'bootstrap3';
+    JSONEditor.defaults.iconlib = 'fontawesome4';
+    </script>
     <style type="text/css">
-    td {
+    .table_holder td {
         border: 1px solid black;
         cursor: pointer;
-    }
-    
-    td:hover {
-        /*background-color: yellow;*/
-    }
-    
-    td:clicked {
-        background-color: yellow;
     }
     </style>
 </head>
 
 <body>
-    <div>
-        <p>Field:<input type="file" accept=".json" onchange="fileUpload(this)" /></p>
-        <p>Route:<input type="file" accept=".json" onchange="fileUpload(this)" /></p>
+    <!--     <div class='row'>
+        <div class='small-6 columns'>
+            <table>
+                <tr>
+                    <td>Field</td>
+                    <td>Route</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" accept=".json" onchange="fileUpload(this)" />
+                    </td>
+                    <td>
+                        <input type="file" accept=".json" onchange="fileUpload(this)" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class='small-6 columns'>
+            <button>Load</button>
+        </div>
+    </div> -->
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-8' id='table_holder'></div>
+            <div class='col-md-4' pull-right id='editor_holder'></div>
+        </div>
     </div>
-    
-    <div id='table_holder'></div>
-    <div id='editor_holder'></div>
-    <button id='load'>Load</button>
-    <button id='submit'>Save</button>
-    <script type="text/javascript">
-    function fileUpload(fis) {
-        // alert("파일네임: " + fis.value.substring(str.lastIndexOf("\\") + 1));
-        var reader = new FileReader();
-        reader.onload = function() {
-            console.log(JSON.parse(reader.result));
-        }
-        console.log(fis.files[0]);
-        console.log(reader);
-        reader.readAsText(fis.files[0]);
-    }
-
-    var data = {};
-
-    var mainTable = document.getElementById('mainTable');
-    var content = document.getElementById('content');
-
-    var fieldJson = {};
-    var routeJson = {};
-
-    OVER_COLOR = "gray";
-    LEAVE_COLOR = "";
-    DOWN_COLOR = "black";
-    UP_COLOR = OVER_COLOR;
-
-    var TILE_SCHEMA = {
-        schema: {
-            type: "object",
-            title: "Tile",
-            properties: {
-                Position: {
-                    type: "object",
-                    properties: {
-                        X: {
-                            type: "integer",
-                            default: 0
-                        },
-                        Y: {
-                            type: "integer",
-                            default: 0
-                        }
-                    }
-                },
-                Type: {
-                    type: "string",
-                    enum: [
-                        "VE_NONE",
-                        "VE_START",
-                        "VE_NORMAL",
-                        "VE_CLEAR",
-                    ],
-                    default: "VE_NONE"
-                },
-                Effect: {
-                    type: "object",
-                    properties: {
-                        EffectType: {
-                            type: "string",
-                            enum: [
-                                "VE_Battle",
-                                "VE_BattleRandom",
-                                "VE_BossBattle",
-                                "VE_Heal",
-                                "VE_GetGold",
-                                "VE_GetItemRandom",
-                                "VE_RouteChange"
-                            ],
-                            default: "VE_Heal"
-                        },
-                        IntValue: {
-                            type: "integer",
-                            default: 0
-                        },
-                        TextValue: {
-                            type: "string",
-                            default: "None"
-                        }
-                    }
-                },
-                ArrowDirection: {
-                    type: "string",
-                    enum: ["VE_None", "VE_Left", "VE_Right", "VE_Up", "VE_Down"],
-                    default: "VE_None"
-                },
-                StoryType: {
-                    type: "string",
-                    enum: ["VE_None", "PreviousEffect", "AfterEffect"]
-                },
-                StoryCode: {
-                    type: "string"
-
-                },
-                IsRouteChange: {
-                    type: "boolean"
-
-                },
-                RouteIndex: {
-                    type: "integer"
-
-                },
-                IsMustStop: {
-                    type: "boolean"
-
-                },
-                IsRandomable: {
-                    type: "boolean"
-
-                }
-            }
-        }
-    };
-
-    $.getJSON("DT_Field2.json", function(json) {
-        fieldJson = json;
-        $.getJSON("DT_Route2.json", function(json) {
-            routeJson = json;
-            drawField(fieldJson);
-        });
-    });
-
-    function drawField(fields) {
-        for (var i = 0; i < fields.length; ++i) {
-            var field = fields[i];
-            // create table
-            var table = document.createElement('table');
-            table.id = field['name'];
-            table.style = "-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;";
-
-            document.getElementById('table_holder').appendChild(table);
-
-            // add row and column
-            for (var j = 0; j < field['Row']; ++j) {
-                var row = table.insertRow(j);
-                for (var k = 0; k < field['Column']; ++k) {
-                    var cell = row.insertCell(k);
-                    cell.innerHTML = ".";
-                    cell.onmouseover = function() {
-                        this.style = "background-color:" + OVER_COLOR + ";"
-                    }
-                    cell.onmouseleave = function() {
-                        this.style = "background-color:" + LEAVE_COLOR + ";"
-                    }
-                    cell.onmousedown = function() {
-                        this.style = "background-color:" + DOWN_COLOR + ";"
-                    }
-                    cell.onmouseup = function() {
-                        console.log("UP");
-                        var obj = JSON.parse(this.children[0].innerHTML);
-                        editor.setValue(obj)
-                        this.style = "background-color:" + UP_COLOR + ";"
-                    }
-                }
-            }
-
-            // draw each route
-            for (var j = 0; j < field['RouteList'].length; ++j) {
-                var routeName = field['RouteList'][j];
-                for (var k = 0; k < routeJson.length; ++k) {
-                    if (routeJson[k]['Name'] == routeName)
-                        drawRoute(table, routeJson[k]);
-                }
-            }
-        }
-
-    }
-
-    function drawRoute(table, route) {
-        var tileList = route['TileList'];
-        for (var i = 0; i < tileList.length; ++i) {
-            var pos = tileList[i]['Position'];
-            var cell = table.rows[pos.Y].cells[pos.X];
-            cell.innerHTML = tileList[i]['Effect']['EffectType'];
-            cell.innerHTML += "<a style='display: none;'>" + JSON.stringify(tileList[i]) + "</a>";
-        }
-    }
-
-    var editor = new JSONEditor(document.getElementById('editor_holder'), TILE_SCHEMA);
-
-    document.getElementById('load').addEventListener('click', function() {
-        console.log('load from file');
-        editor.setValue(testValue);
-    });
-
-    document.getElementById('submit').addEventListener('click', function() {
-        console.log(editor.getValue());
-    });
-    </script>
+    <div class='row'>
+        <button id='submit'>Save</button>
+    </div>
+    <div class='row'>
+        <div id='editor_holder' class='medium-12 columns'></div>
+    </div>
+    <script type="text/javascript" src="static/js/dtparser.js"></script>
 </body>
 
 </html>
